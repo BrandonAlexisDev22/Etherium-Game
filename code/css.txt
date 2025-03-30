@@ -1,0 +1,99 @@
+.victoria{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    video{
+        position: absolute;
+        width: 110%;
+        object-fit: cover;
+        top: -100px;
+
+         /* Prueba con diferentes modos de mezcla */
+         /* mix-blend-mode: normal; */
+         mix-blend-mode: multiply;
+
+    }
+}
+
+
+.imagenesVictoria{
+    position: absolute;
+    z-index: 10;
+    bottom: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.imagenVictoria{
+    width: 25%;
+}
+.personajevictoria1{
+    animation: translateIzquierda 40s forwards, aparecer 10s forwards; 
+
+    
+}
+
+.personajevictoria2{
+    animation: aparecer 10s forwards;
+}
+
+.personajevictoria3{
+    animation: translateDerecha 30s  forwards, aparecer 10s forwards;
+
+}
+
+/* animaciontranslate */
+
+@keyframes translateIzquierda {
+    0% {
+        transform: translate(150px, 0);
+    }
+    100% {
+        transform: translate(0px, 0);
+    }
+}
+
+
+@keyframes translateDerecha {
+    0% {
+        transform: translate(-150px, 0);
+    }
+    100% {
+        transform: translate(0px, 0);
+    }
+}
+
+/* //animacion aparecre  */
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+
+.botonReiniciar{
+    position: absolute;
+    bottom: 50px;
+    left: 720px;
+    z-index: 10;
+    letter-spacing: 2px;
+    opacity: 0;
+
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    font-size: 20px;
+    cursor: pointer;
+
+    animation: aparecer 1s  forwards 5s ;
+
+
+}

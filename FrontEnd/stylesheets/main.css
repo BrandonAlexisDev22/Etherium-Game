@@ -1,0 +1,147 @@
+/* Reset básico: elimina márgenes, paddings y define fuente global. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+/* Centra el contenido del body y establece un fondo negro. */
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(66, 66, 66);
+}
+
+/* Configura el contenedor principal (escenario) con un tamaño fijo y posición relativa. */
+.escenario {
+    width: 1400px;
+    height: 610px;
+    display: flex;
+    position: relative;
+}
+
+/* Fondo del escenario: imagen centrada, no repetida y cubriendo el área. */
+.fondo {
+    width: 100%;
+    height: 610px;
+    background: url(../Assets/img/BG5.jpeg) center/cover no-repeat;
+    position: absolute;
+}
+
+/* Estilos generales para los personajes dentro del escenario. */
+.personaje {
+    width: 400px;
+    height: 160px;
+    position: relative;
+}
+.personaje2 {
+    width: 400px;
+    height: 160px;
+    position: relative;
+}
+
+.marcadorTurnos{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.condicion {
+    width: auto;
+    height: 30px;
+    position: absolute;
+    display: flex;
+}
+
+.debilitar {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.potenciar {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seleccionHabilidad{
+    border: 3px solid yellow;
+}
+
+/* Indicador de turno */
+.seccionTurnoCirculo {
+    width: 100px;
+    height: 50px;
+    background: radial-gradient(ellipse at center, rgba(8, 191, 242, 0.8), rgba(9, 189, 255, 0.235) 80%);
+    border-radius: 50%;
+    position: absolute;
+    animation: turnoAnimation 2s  linear infinite;
+  }
+  
+  @keyframes turnoAnimation {
+    0% {
+        transform: scale(1.1);
+        box-shadow: 0 0 5px rgba(10, 65, 148, 0.811), 0 0 20px rgba(8, 191, 242, 0.4);
+        /* filter: brightness(1); */
+    }
+    25% {
+        transform: scale(1.2);
+        box-shadow: 0 0 5px rgba(21, 85, 138, 0.9), 0 0 25px rgba(8, 191, 242, 0.6);
+        /* filter: brightness(1.2); */
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 5px rgba(17, 74, 160, 0.852), 0 0 20px rgba(8, 149, 237, 0.4);
+        /* filter: brightness(1); */
+    }
+    75% {
+        transform: scale(1.2);
+        box-shadow: 0 0 5px rgba(12, 96, 193, 0.667), 0 0 25px rgba(8, 191, 242, 0.3);
+        /* filter: brightness(0.8); */
+    }
+    100% {
+        transform: scale(1.1);
+        box-shadow: 0 0px 5px rgba(31, 75, 196, 0.7), 0 0 30px rgba(4, 131, 169, 0.4);
+        /* filter: brightness(1); */
+    }
+}
+  
+
+.video{
+    width: 1400px;
+    height: 610px;
+    position: absolute;
+
+    video{
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: screen;
+        object-fit: cover;
+    }
+}
+
+.video2{
+    width: 1400px;
+    height: 610px;
+    position: absolute;
+    
+    video{
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: screen;
+        object-fit: cover;
+        opacity: 0.5;
+    }
+}

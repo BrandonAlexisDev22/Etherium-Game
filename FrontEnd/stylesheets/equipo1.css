@@ -1,0 +1,431 @@
+/* Estilos del equipo 1: ocupa el 50% del escenario, con elementos alineados al final en columna. */
+.escenario_equipo1 {
+    width: 50%;
+    height: 610px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+}
+
+/* Posiciones absolutas para los personajes del equipo 1 en ubicaciones específicas. */
+.escenario_equipo1 .lugar1 {
+    position: absolute;
+    left: 230px;
+    bottom: 290px;
+}
+
+.escenario_equipo1 .lugar2 {
+    position: absolute;
+    bottom: 160px;
+}
+
+.escenario_equipo1 .lugar3 {
+    position: absolute;
+    left: 210px;
+    bottom: 20px;
+}
+
+/* Barra de vida del personaje: contenedor gris con borde y una barra de vida interior. */
+.escenario_equipo1 .vida {
+    width: 200px;
+    height: 9px;
+    position: absolute;
+    border: 2px solid black;
+    background-color: gray;
+    border-radius: 16px;
+    left: 63px;
+    top: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.escenario_equipo1 span {
+    height: 6px;
+    position: absolute;
+    background-color: #33AA39;
+    border-radius: 16px;
+    transition: 900ms;
+}
+
+/* Texto de vida del personaje, alineado en la parte inferior. */
+.escenario_equipo1 .parrafo1 {
+    position: absolute;
+    bottom: 8px;
+    color: white;
+    right: 150px;
+}
+
+.escenario_equipo1 .parrafo2{
+    color: white;
+}
+
+.escenario_equipo1 .parrafo3{
+    color: white;
+}
+/* Estadísticas del personaje (ataque/defensa) con fondo semitransparente, centrado. */
+.escenario_equipo1 .estadisticas {
+    width: 140px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #527558;
+    position: absolute;
+    top: 41px;
+    left: 65px;
+    gap: 25px;
+    border: 1.5px solid black;
+}
+
+.escenario_equipo1 .numeroAtaque{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.escenario_equipo1 .numeroDefensa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.escenario_equipo1 .estadisticaDefensa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.escenario_equipo1 .estadisticaAtaque{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icono "fa-solid" centrado dentro de su contenedor. */
+.escenario_equipo1 .fa-solid {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+
+.escenario_equipo1 .efectoQuemado{
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    left: 120px;
+    bottom: 125px;
+    display: none;
+
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.escenario_equipo1 .efectoVeneno{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 50px;
+    bottom: 150px;
+    display: none; 
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.escenario_equipo1 .ataque, .defensa {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ubicación del personaje y del enemigo, con imagen de fondo centrada. */
+.escenario_equipo1 .ubicacion {
+    width: 125px;
+    height: 125px;
+    position: absolute;
+    left: 180px;
+    top: 20px;
+}
+
+.escenario_equipo1 .imagen1, .imagen2 {
+    width: 140px;
+    height: 140px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.escenario_equipo1 .enemigo {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    left: 280px;
+    top: 20px;
+
+    img{
+        width: 100%;
+        height: 100%;
+        display: none;
+    }
+
+    
+}
+
+.escenario_equipo1 .seccionTurnoCirculo{
+    top: 120px;
+    right: 100px;
+}
+
+.escenario_equipo1 .turno1{
+    width: 50px;
+    height: 50px;
+    top: 50px;
+    position: absolute;
+    display: none;
+    background-image: url(../Assets/img/Turno.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.escenario_equipo1 .turno2{
+    position: absolute;
+    left: 310px;
+    top: 80px;
+    display: none;
+    background-image: url(/FrontEnd/Assets/img/Turno.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.escenario_equipo1 .turno3{
+    position: absolute;
+    right: 15px;
+    top: 80px;
+    display: none;
+    background-image: url(/FrontEnd/Assets/img/Turno.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.escenario_equipo1 .habilidades1{
+    width: 264px;
+    height: 95px;
+    position: relative;
+    right: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    z-index: 1;
+}
+
+@keyframes gradient-rotate {
+    0% {
+        border-color: #FFFFFF; /* Blanco */
+    }
+    25% {
+        border-color: #CCCCCC; /* Gris claro */
+    }
+    50% {
+        border-color: #888888; /* Gris medio */
+    }
+    75% {
+        border-color: #555555; /* Gris oscuro */
+    }
+    100% {
+        border-color: #000000; /* Negro */
+    }
+}
+
+.escenario_equipo1 .botonAtacar1 {
+    width: 75px;
+    height: 75px;
+    border: 4px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Necesario para el borde animado */
+    overflow: hidden; /* Oculta el contenido que sale del contenedor */
+    animation: gradient-rotate 2s linear infinite; /* Añade la animación por defecto */
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+
+    /* Borde con degradado */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -4px; /* Ajusta según el grosor del borde */
+        left: -4px; /* Ajusta según el grosor del borde */
+        right: -4px; /* Ajusta según el grosor del borde */
+        bottom: -4px; /* Ajusta según el grosor del borde */
+        border: 4px solid transparent;
+        border-radius: 8px; /* Ajusta el radio si lo deseas */
+        z-index: -1; /* Coloca detrás del contenido */
+        animation: gradient-rotate 2s linear infinite; /* Mantiene la animación por defecto */
+    }
+}
+
+
+.escenario_equipo1 .botonHabilidad1 {
+    width: 75px;
+    height: 75px;
+    border: 4px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Necesario para el borde animado */
+    overflow: hidden; /* Oculta el contenido que sale del contenedor */
+    animation: gradient-rotate 2s linear infinite; /* Añade la animación por defecto */
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+
+    /* Borde con degradado */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -4px; /* Ajusta según el grosor del borde */
+        left: -4px; /* Ajusta según el grosor del borde */
+        right: -4px; /* Ajusta según el grosor del borde */
+        bottom: -4px; /* Ajusta según el grosor del borde */
+        border: 4px solid transparent;
+        border-radius: 8px; /* Ajusta el radio si lo deseas */
+        z-index: -1; /* Coloca detrás del contenido */
+        animation: gradient-rotate 2s linear infinite; /* Mantiene la animación por defecto */
+    }
+}
+
+.escenario_equipo1 .botonHabilidad11 {
+    width: 75px;
+    height: 75px;
+    border: 4px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Necesario para el borde animado */
+    overflow: hidden; /* Oculta el contenido que sale del contenedor */
+    animation: gradient-rotate 2s linear infinite; /* Añade la animación por defecto */
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+
+    /* Borde con degradado */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -4px; /* Ajusta según el grosor del borde */
+        left: -4px; /* Ajusta según el grosor del borde */
+        right: -4px; /* Ajusta según el grosor del borde */
+        bottom: -4px; /* Ajusta según el grosor del borde */
+        border: 4px solid transparent;
+        border-radius: 8px; /* Ajusta el radio si lo deseas */
+        z-index: -1; /* Coloca detrás del contenido */
+        animation: gradient-rotate 2s linear infinite; /* Mantiene la animación por defecto */
+    }
+}
+
+.escenario_equipo1 .informacionHabilidad{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    bottom: 100px;
+    right: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(13, 38, 16);
+    display: none;
+    border: rgb(200, 200, 200) 6px double;
+    letter-spacing: 0.5px;
+}
+
+.escenario_equipo1 .nombreHabilidad{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+    color: rgb(200, 200, 200);
+}
+
+.escenario_equipo1 .descripcionHabilidad{
+    width: 98%;
+    height: 60%;
+    margin-top: 5px;
+    margin-left: 1%;
+    text-align: center;
+    color: rgb(253, 253, 253);
+    letter-spacing: 0.1px;
+}
+
+.escenario_equipo1 .cooldownHabilidad1{
+    width: 67px;
+    height: 67.5px;
+    position: absolute;
+    background-color: rgba(82, 20, 20, 0.900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 13.5px;
+    right: 526.5px;
+    z-index: 20;
+    display: none;
+}
+
+.escenario_equipo1 .numeroCooldown1{
+    color: white;
+    font-size: 30px;
+}
+
+.escenario_equipo1 .cooldownHabilidad11{
+    width: 67px;
+    height: 67px;
+    position: absolute;
+    background-color: rgba(82, 20, 20, 0.900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 14px;
+    right: 442px;
+    z-index: 20;
+    display: none;
+}
+
+.escenario_equipo1 .numeroCooldown11{
+    color: white;
+    font-size: 30px;
+}

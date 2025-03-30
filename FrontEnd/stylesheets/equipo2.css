@@ -1,0 +1,434 @@
+/* Estilos del contenedor del equipo 2: ocupa el 50% del escenario, con elementos alineados al final en columna. */
+.escenario_equipo2 {
+    width: 50%;
+    height: 610px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+}
+
+.escenario_equipo2 .seccionTurnoCirculo{
+    top: 120px;
+    right: 200px;
+}
+
+/* Posiciones absolutas para los personajes del equipo 2 en distintas ubicaciones. */
+.escenario_equipo2 .lugar4 {
+    position: absolute;
+    right: 230px;
+    bottom: 290px;
+}
+
+.escenario_equipo2 .lugar5 {
+    position: absolute;
+    bottom: 160px;
+}
+
+.escenario_equipo2 .lugar6 {
+    position: absolute;
+    right: 210px;
+    bottom: 20px;
+}
+
+/* Barra de vida del personaje: fondo gris, borde redondeado y una barra interna de color. */
+.escenario_equipo2 .vida {
+    width: 200px;
+    height: 9px;
+    position: absolute;
+    border: 2px solid black;
+    background-color: gray;
+    border-radius: 16px;
+    left: 134px;
+    top: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.escenario_equipo2 span {
+    height: 6px;
+    position: absolute;
+    background-color: #2B6CB0;
+    border-radius: 16px;
+    transition: 900ms;
+}
+
+/* Texto de vida del personaje, alineado abajo con color blanco. */
+.escenario_equipo2 .parrafo1 {
+    position: absolute;
+    bottom: 8px;
+    color: rgb(255, 255, 255);
+    left: 150px;
+}
+
+.escenario_equipo2 .parrafo2{
+    color: white;
+}
+
+.escenario_equipo2 .parrafo3{
+    color: white;
+}
+
+.escenario_equipo2 .fa-solid{
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+/* Estadísticas del personaje (ataque/defensa), con un fondo semitransparente y texto centrado. */
+.escenario_equipo2 .estadisticas {
+    width: 140px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4A7E99;
+    position: absolute;
+    top: 40px;
+    left: 193px;
+    gap: 10px;
+    border: 1px solid black;
+}
+
+.escenario_equipo2 .numeroAtaque{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.escenario_equipo2 .numeroDefensa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.escenario_equipo2 .estadisticaAtaque{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.escenario_equipo2 .estadisticaDefensa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bloques individuales de ataque y defensa, con íconos centrados. */
+.escenario_equipo2 .ataque, .defensa {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo para los párrafos dentro de estadísticas, con texto blanco centrado. */
+.escenario_equipo2 .parrafo2 {
+    width: 31px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+/* Condición del personaje (buffs o debuffs) con dos secciones: debilitar y potenciar. */
+.escenario_equipo2 .efectoQuemado{
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    bottom: 128px;
+    left: 170px;
+    display: none;
+
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.escenario_equipo2 .efectoVeneno{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 280px;
+    bottom: 150px;
+    display: none;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Ubicación del personaje, con imagen cuadrada centrada. */
+.escenario_equipo2 .ubicacion {
+    width: 125px;
+    height: 125px;
+    position: absolute;
+    left: 80px;
+    top: 20px;
+}
+
+/* Imagen del personaje y del enemigo, con tamaño y ajuste del fondo. */
+.escenario_equipo2 .imagen1, .imagen2 {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Contenedor para el enemigo, con una posición absoluta y margen ajustado. */
+.escenario_equipo2 .enemigo {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: 20px;
+    right: 280px;
+    
+    img{
+        width: 100%;
+        height: 100%;
+        display: none;
+        
+    }
+}
+
+
+.escenario_equipo2 .turno4{
+    position: absolute;
+    top: 70px;
+    left: 60px;
+    display: none;
+    background-image: url(/FrontEnd/Assets/img/Turno.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.escenario_equipo2 .turno5{
+    position: absolute;
+    left: 50px;
+    top: 80px;
+    display: none; 
+    background-image: url(/FrontEnd/Assets/img/Turno.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.escenario_equipo2 .turno6{
+    position: absolute;
+    left: 40px;
+    top: 75px;
+    display: none;
+    background-image: url(/FrontEnd/Assets/img/Turno.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.escenario_equipo2 .habilidades2{
+    width: 264px;
+    height: 95px;
+    position: relative;
+    left: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    z-index: 1;
+}
+
+@keyframes gradient-rotate {
+    0% {
+        border-color: #5e5e5e; /* Blanco */
+    }
+    25% {
+        border-color: #2f2f2f; /* Gris claro */
+    }
+    50% {
+        border-color: #0e0e0e; /* Gris medio */
+    }
+    75% {
+        border-color: #2f2f2f; /* Gris oscuro */
+    }
+    100% {
+        border-color: #5e5e5e; /* Negro */
+    }
+}
+
+.escenario_equipo2 .botonAtacar2 {
+    width: 75px;
+    height: 75px;
+    border: 4px solid black;
+    position: relative; 
+    overflow: hidden; 
+    animation: gradient-rotate 2s linear infinite; 
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+
+    /* Borde con degradado */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -3px; /* Ajusta según el grosor del borde */
+        left: -3px; /* Ajusta según el grosor del borde */
+        right: -3px; /* Ajusta según el grosor del borde */
+        bottom: -3px; /* Ajusta según el grosor del borde */
+        border: 3px solid transparent;
+        border-radius: 8px; /* Ajusta el radio si lo deseas */
+        z-index: -1; /* Coloca detrás del contenido */
+        animation: gradient-rotate 2s linear infinite; /* Mantiene la animación por defecto */
+    }
+}
+
+.escenario_equipo2 .botonHabilidad2 {
+    width: 75px;
+    height: 75px;
+    border: 4px solid black;
+    position: relative; 
+    overflow: hidden; 
+    animation: gradient-rotate 2s linear infinite; 
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+
+    /* Borde con degradado */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -3px; /* Ajusta según el grosor del borde */
+        left: -3px; /* Ajusta según el grosor del borde */
+        right: -3px; /* Ajusta según el grosor del borde */
+        bottom: -3px; /* Ajusta según el grosor del borde */
+        border: 3px solid transparent;
+        border-radius: 8px; /* Ajusta el radio si lo deseas */
+        z-index: -1; /* Coloca detrás del contenido */
+        animation: gradient-rotate 2s linear infinite; /* Mantiene la animación por defecto */
+    }
+}
+
+.escenario_equipo2 .botonHabilidad22 {
+    width: 75px;
+    height: 75px;
+    border: 4px solid black;
+    position: relative; 
+    overflow: hidden; 
+    animation: gradient-rotate 2s linear infinite; 
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+
+    /* Borde con degradado */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -3px; /* Ajusta según el grosor del borde */
+        left: -3px; /* Ajusta según el grosor del borde */
+        right: -3px; /* Ajusta según el grosor del borde */
+        bottom: -3px; /* Ajusta según el grosor del borde */
+        border: 3px solid transparent;
+        border-radius: 8px; /* Ajusta el radio si lo deseas */
+        z-index: -1; /* Coloca detrás del contenido */
+        animation: gradient-rotate 2s linear infinite; /* Mantiene la animación por defecto */
+    }
+}
+
+
+.escenario_equipo2 .informacionHabilidad2{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    bottom: 100px;
+    right: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(16, 27, 42);
+    display: none;
+    border: rgb(200, 200, 200) 6px double;
+    letter-spacing: 0.5px;
+}
+
+.escenario_equipo2 .nombreHabilidad2{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+    color: rgb(200, 200, 200);
+}
+
+.escenario_equipo2 .descripcionHabilidad2{
+    width: 98%;
+    height: 60%;
+    margin-top: 5px;
+    margin-left: 1%;
+    text-align: center;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+}
+
+.escenario_equipo2 .cooldownHabilidad2{
+    width: 71.5px;
+    height: 72px;
+    position: absolute;
+    background-color: rgba(82, 20, 20, 0.900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 11.5px;
+    left: 534px;
+    z-index: 20;
+    display: none;
+}
+
+.escenario_equipo2 .numeroCooldown2{
+    color: white;
+    font-size: 30px;
+}
+
+.escenario_equipo2 .cooldownHabilidad22{
+    width: 71.5px;
+    height: 72px;
+    position: absolute;
+    background-color: rgba(82, 20, 20, 0.900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 11.5px;
+    left: 619px;
+    z-index: 20;
+    display: none;
+}
+
+.escenario_equipo2 .numeroCooldown22{
+    color: white;
+    font-size: 30px;
+}
