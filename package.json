@@ -1,0 +1,19 @@
+{
+  "name": "etherium-game",
+  "version": "1.0.0",
+  "description": "Etherium Game siendo el segundo proyecto elegido en el IngeniaTech 2024 como uno de los mejores proyectos de la feria, trabajo realizado en compañia de 3 compañeros de colegio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandonAlexisDev22/Etherium-Game.git"
+  },
+  "author": "Brandon Alexis Quintero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrandonAlexisDev22/Etherium-Game/issues"
+  },
+  "homepage": "https://github.com/BrandonAlexisDev22/Etherium-Game#readme"
+}
