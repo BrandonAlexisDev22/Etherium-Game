@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/BrandonAlexisDev22/Etherium-Game/issues"
   },
-  "homepage": "https://github.com/BrandonAlexisDev22/Etherium-Game#readme"
+  "homepage": "https://github.com/BrandonAlexisDev22/Etherium-Game#readme",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3"
+  }
 }
