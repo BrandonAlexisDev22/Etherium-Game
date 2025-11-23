@@ -1,7 +1,38 @@
 // CLASE DE PERSONAJES DE VIDEOJUEGO
-class Personaje {
-  static contadorId = 1;
-  constructor(nombre, ataque, defensa, velocidad) {
+interface IPersonaje {
+  nombre: string,
+  ataque: number,
+  defensa: number
+  velocidad: number
+
+  estaMuerto(): boolean;
+  validarNegativos(): void;
+  validarPositivos(): void;
+}
+
+interface PersonajeArgs {
+  nombre: string,
+  ataque: number,
+  defensa: number,
+  velocidad: number,
+}
+
+class Personaje implements IPersonaje {
+  nombre: string;
+  ataque: number;
+  defensa: number;
+  velocidad: number;
+  id: number;
+  vida: number;
+  fortalecimiento: Efecto[];
+  debilitamiento:  Efecto[];
+  habilidades: any; //Por Ahora
+  equipo: number | null; 
+  imagen: string;
+  imagen2: string;
+
+  static contadorId: number = 1;
+  constructor({nombre, ataque, defensa, velocidad}: PersonajeArgs) {
     // ATRIBUTOS BÁSICOS DEL PERSONAJE
     this.id = Personaje.contadorId++;
     this.vida = 100;
@@ -17,19 +48,19 @@ class Personaje {
     this.imagen2 = "Atacando";
   }
 
-estaMuerto() {
+estaMuerto(): boolean {
   // Devuelve true si el personaje está muerto (su vida es 0 o menos)
   return this.vida <= 0;
 }
 
-validarNegativos() {
+validarNegativos(): void {
   // Asegura que los atributos de vida, defensa y ataque no sean negativos
   if (this.vida < 0) this.vida = 0;
   if (this.ataque < 0) this.ataque = 0;
   if (this.defensa < 0) this.defensa = 0;
 }
 
-validarPositivos() {
+validarPositivos(): void {
   // Valida que los atributos no superen ciertos límites
   // Por ejemplo, la vida no puede exceder 100, y la defensa no puede ser mayor a 60
   if (this.vida > 100) this.vida = 100;
@@ -51,7 +82,7 @@ static validarExcesos() {
 
 }
 
-Atacar(objetivo) {
+Atacar(objetivo: Personaje) {
   // Método que recibe:
   // - objetivo: el personaje que recibirá el ataque.
   // Define las condiciones bajo las cuales el ataque será exitoso.
@@ -69,7 +100,7 @@ Atacar(objetivo) {
     console.info("has hecho", Daño ,"puntos de daño al enemigo"); 
   }
   objetivo.vida -= Daño; // Verifica que el daño no sea negativo
-  this.habilidades.forEach((habilidad) => {
+  this.habilidades.forEach((habilidad: Habilidades) => {
     habilidad.reducirEspera();
   });
 
@@ -79,7 +110,7 @@ Atacar(objetivo) {
   return true
 }
 
-usarHabilidad(nombreHabilidad, objetivo) {
+usarHabilidad(nombreHabilidad: string, objetivo: Personaje) {
   // Método que recibe:
   // - nombreHabilidad: el nombre de la habilidad que se quiere usar.
   // - objetivo: el personaje sobre el que se va a aplicar la habilidad.
@@ -90,7 +121,7 @@ usarHabilidad(nombreHabilidad, objetivo) {
   if (Juego.personajeActual != this) return console.warn("Es el turno de", Juego.personajeActual); // si el personaje con el turno actual no es el que acciona la habilidad no se efectua la habilidad
 
   const habilidadUsarIndex = this.habilidades.findIndex(
-    (habilidad) => habilidad.nombre == nombreHabilidad
+    (habilidad: Habilidades) => habilidad.Nombre == nombreHabilidad
   ); //Encuentra el indice de la habilidad
 
   if (habilidadUsarIndex === -1) return console.warn("Habilidad no encontrada") ; // si la habilidad no es encontrada no se podra usar
@@ -107,11 +138,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
           return false
         } else {
           habilidadUsar.Activar( this,objetivo );
-          this.habilidades.forEach((habilidad, index) => {
+          this.habilidades.forEach((habilidad: Habilidades, index: number) => {
           if (index != habilidadUsarIndex) habilidad.reducirEspera();
           }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
           Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-          Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+          Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
           ActualizarInterfaz()
         }
       } else {
@@ -120,11 +151,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
           return false
         } else {
           habilidadUsar.Activar( this,objetivo );
-          this.habilidades.forEach((habilidad, index) => {
+          this.habilidades.forEach((habilidad: Habilidades, index: number) => {
           if (index != habilidadUsarIndex) habilidad.reducirEspera();
           }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
           Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-          Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+          Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
           ActualizarInterfaz()
         }
       }
@@ -135,11 +166,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
         return false
       } else {
         habilidadUsar.Activar( this,objetivo );
-        this.habilidades.forEach((habilidad, index) => {
+        this.habilidades.forEach((habilidad: Habilidades, index: number) => {
         if (index != habilidadUsarIndex) habilidad.reducirEspera();
         }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
         Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-        Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+        Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
         ActualizarInterfaz()
       }
     }
@@ -152,11 +183,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
           return false
         } else {
           habilidadUsar.Activar( this,objetivo );
-          this.habilidades.forEach((habilidad, index) => {
+          this.habilidades.forEach((habilidad: Habilidades, index: number) => {
             if (index != habilidadUsarIndex) habilidad.reducirEspera();
           }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
           Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-          Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+          Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
           ActualizarInterfaz()
         }
       } else {
@@ -165,11 +196,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
           return false
         } else {
           habilidadUsar.Activar( this,objetivo );
-          this.habilidades.forEach((habilidad, index) => {
+          this.habilidades.forEach((habilidad: Habilidades, index: number) => {
             if (index != habilidadUsarIndex) habilidad.reducirEspera();
           }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
           Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-          Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+          Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
           ActualizarInterfaz()
         }
       }      
@@ -181,95 +212,88 @@ usarHabilidad(nombreHabilidad, objetivo) {
         return false
       } else {
         habilidadUsar.Activar( this,objetivo );
-        this.habilidades.forEach((habilidad, index) => {
+        this.habilidades.forEach((habilidad: Habilidades, index: number) => {
           if (index != habilidadUsarIndex) habilidad.reducirEspera();
         }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
         Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-        Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+        Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
         ActualizarInterfaz()
       }
     }
   } 
   return true
 }
-
-  
 }
 
 // Creación de clases de personajes
 
 class Guerrero extends Personaje {
-  constructor(
-    nombre,
-    ataque,
-    defensa,
-    velocidad
-  ) {
-    super(nombre, ataque, defensa, velocidad);
+  constructor(args: PersonajeArgs) {
+    super(args);
     
     this.habilidades.push(EscudoBendito(),Pandemia());
   }
 }
 
 class Mago extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
+  constructor(args: PersonajeArgs) {
+    super(args);
     this.habilidades.push(Incinerar());
     this.habilidades.push(LlamadoSagrado());
   }
 }
 
 class Necromante extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
+  constructor(args: PersonajeArgs) {
+    super(args);
     this.habilidades.push(Guerra());
     this.habilidades.push(LlamaMortal());
   }
 }
 
 class Elfo extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
+  constructor(args: PersonajeArgs) {
+    super(args);
     this.habilidades.push(Blindar(),Virus());
   }
 }
 
 class Sprinter extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
+  constructor(args: PersonajeArgs) {
+    super(args);
     this.habilidades.push(Aturdir());
     this.habilidades.push(TempestadEterea());
   }
 }
 
 class Dragon extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
+  constructor(args: PersonajeArgs) {
+    super(args);
     this.habilidades.push(Incinerar());
     this.habilidades.push(TempestadEterea());
   }
 }
 
 //Guerreros
-const Valeri1 = new Guerrero("Valeri1", 30, 40, 30);
-const Valeri2 = new Guerrero("Valeri2", 60, 40, 30);
+const Valeri1 = new Guerrero({ nombre: "Valeri1", ataque: 30, defensa: 40, velocidad: 30 });
+const Valeri2 = new Guerrero({ nombre: "Valeri2", ataque: 60, defensa: 40, velocidad: 30 });
 
 // Magos
-const Anderson1 = new Mago("Anderson1", 70, 10, 40);
-const Anderson2 = new Mago("Anderson2", 50, 40, 30);
+const Anderson1 = new Mago({ nombre: "Anderson1", ataque: 70, defensa: 10, velocidad: 40 });
+const Anderson2 = new Mago({ nombre: "Anderson2", ataque: 50, defensa: 40, velocidad: 30 });
 
 //Necromantes
-const Brandon1 = new Necromante("Brandon1", 40, 40, 50);
-const Brandon2 = new Necromante("Brandon2", 50, 40, 40);
+const Brandon1 = new Necromante({ nombre: "Brandon1", ataque: 40, defensa: 40, velocidad: 50 });
+const Brandon2 = new Necromante({ nombre: "Brandon2", ataque: 50, defensa: 40, velocidad: 40 });
 
 //Elfos
-const Mateo1 = new Elfo("Mateo1", 60, 40, 30);
-const Mateo2 = new Elfo("Mateo2", 40, 40, 30);
+const Mateo1 = new Elfo({ nombre: "Mateo1", ataque: 60, defensa: 40, velocidad: 30 });
+const Mateo2 = new Elfo({ nombre: "Mateo2", ataque: 40, defensa: 40, velocidad: 30 });
 
 //Dragon
-const Steven1 = new Dragon("Steven1", 70, 30, 40);
-const Steven2 = new Dragon("Steven2", 70, 30, 40);
+const Steven1 = new Dragon({ nombre: "Steven1", ataque: 70, defensa: 30, velocidad: 40 });
+const Steven2 = new Dragon({ nombre: "Steven2", ataque: 70, defensa: 30, velocidad: 40 });
 
 //Sprinter
-const Yeffer1 = new Sprinter("Yeffer1", 50, 40, 0);
-const Yeffer2 = new Sprinter("Yeffer2", 50, 40, 0);
+const Yeffer1 = new Sprinter({ nombre: "Yeffer1", ataque: 50, defensa: 40, velocidad: 0 });
+const Yeffer2 = new Sprinter({ nombre: "Yeffer2", ataque: 50, defensa: 40, velocidad: 0 });

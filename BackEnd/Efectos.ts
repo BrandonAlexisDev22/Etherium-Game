@@ -1,35 +1,55 @@
-class Efecto {
-  
-  //CLASE PRINCIPAL DEL EFECTO QUE CONTENDRA  LOS METODOS PRINCIPALES DE LOS EFECTOS
+// ...existing code...
+interface IEfecto {
+  nombre: string;
+  descripcion: string;
+  efecto: (personaje: Personaje) => void; // tipo concreto en lugar de Function
+  tiempo: number;
+  finEfecto?: (personaje: Personaje) => void;
+}
 
-  constructor(nombre, descripcion, efecto, tiempo) {
+class Efecto implements IEfecto {
+  nombre: string;
+  descripcion: string;
+  efecto: (personaje: Personaje) => void;
+  tiempo: number;
+  finEfecto?: (personaje: Personaje) => void;
+
+  constructor({ nombre, descripcion, efecto, tiempo, finEfecto }: IEfecto) {
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.efecto = efecto;
     this.tiempo = tiempo;
+    this.finEfecto = finEfecto;
   }
 
-  Activar(personaje) {
+  Activar(personaje: Personaje): void {
     if (this.tiempo > 0) {
       if (personaje.estaMuerto()) {
         console.log(`${personaje.nombre} está muerto`);
         return;
       }
-      
+
       this.efecto(personaje); // ACTIVACION
-      Personaje.validarExcesos(personaje); // VALIDACION DE EXCESOS
+
+      // Si validarExcesos es un método estático de Personaje, llamarlo con la instancia
+      Personaje.validarExcesos();
+
       console.log(`Efecto activado: ${this.nombre}, Tiempo restante: ${this.tiempo}`);
       this.reducirEspera();
-
     } else {
       this.removerEfectos(personaje);
     }
   }
 
-  removerEfectos(personaje) {
+  removerEfectos(personaje: Personaje): void {
     if (!personaje) {
       console.warn("El personaje no existe");
       return;
+    }
+
+    // Ejecutar acción de limpieza si existe
+    if (typeof this.finEfecto === 'function') {
+      try { this.finEfecto(personaje); } catch (e) { console.warn('Error al ejecutar finEfecto', e); }
     }
 
     if (Array.isArray(personaje.debilitamiento)) {
@@ -46,38 +66,39 @@ class Efecto {
     console.log(`Efectos eliminados: ${this.nombre}`);
   }
 
-  reducirEspera() {
-    this.tiempo = Math.max(0, this.tiempo - 1); // Se asegura de no reducir por debajo de 0
+  reducirEspera(): void {
+    this.tiempo = Math.max(0, this.tiempo - 1);
   }
 }
 
 class EfectoContinuo extends Efecto {
-  constructor(nombre, descripcion, efecto, tiempo) {
-    super(nombre, descripcion, efecto, tiempo);
+  constructor(args: IEfecto) {
+    super(args);
   }
 }
 
 class EfectoFijo extends Efecto {
-  constructor(nombre, descripcion, efecto, tiempo) {
-    super(nombre, descripcion, efecto, tiempo);
-    this.activo = false; // Inicialmente no activo
+  activo: boolean = false;
+
+  constructor(args: IEfecto) {
+    super(args);
   }
 
-  Aplicar(personaje) {
+  Aplicar(personaje: Personaje): void {
     if (this.tiempo > 0) {
-      this.efecto(personaje); // Aplica el efecto
-      this.activo = true; // Marca el efecto como activo
+      this.efecto(personaje);
+      this.activo = true;
       console.log(`Efecto fijo activado: ${this.nombre}`);
-      this.reducirEspera(); // Reduce el tiempo
+      this.reducirEspera();
     } else {
-      super.removerEfectos(personaje)// Remover si el tiempo es 0
+      super.removerEfectos(personaje);
     }
   }
 
-  removerEfectos(personaje) {
+  removerEfectos(personaje: Personaje): void {
     if (this.activo) {
-      super.removerEfectos(personaje); // Llama a la implementación de la clase base
-      this.activo = false; // Marca como inactivo
+      super.removerEfectos(personaje);
+      this.activo = false;
       console.log(`Efecto fijo desactivado: ${this.nombre}`);
     }
   }

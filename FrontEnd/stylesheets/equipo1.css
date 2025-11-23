@@ -184,22 +184,8 @@
     right: 100px;
 }
 
-.escenario_equipo1 .turno1{
-    width: 50px;
-    height: 50px;
-    top: 50px;
-    position: absolute;
-    display: none;
-    background-image: url(../Assets/img/Turno.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .escenario_equipo1 .turno2{
     position: absolute;
-    left: 310px;
-    top: 80px;
     display: none;
     background-image: url(/FrontEnd/Assets/img/Turno.gif);
     background-position: center;
@@ -208,8 +194,6 @@
 }
 .escenario_equipo1 .turno3{
     position: absolute;
-    right: 15px;
-    top: 80px;
     display: none;
     background-image: url(/FrontEnd/Assets/img/Turno.gif);
     background-position: center;
