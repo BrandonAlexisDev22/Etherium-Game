@@ -423,6 +423,7 @@ Juego.equipo2.forEach((personajes, i) => {
     let personaje = personajes
     const personajeActual = Juego.personajeActual
 
+  
     console.log(habilidadSeleccionada)
     if (habilidadSeleccionada == 'Atacar') {
       if (Juego.personajeActual.Atacar(personaje)) {
@@ -648,7 +649,7 @@ imagenAtacar1.addEventListener("mouseenter", function () {
 
 
 imagenHabilidad1.addEventListener("click", function () {
-  habilidadSeleccionada = Juego.personajeActual.habilidades[0].nombre;
+  habilidadSeleccionada = Juego.personajeActual.habilidades[0].Nombre;
   console.log(habilidadSeleccionada);
 
   const seleccionados = document.querySelectorAll('.seleccionHabilidad')
@@ -667,7 +668,7 @@ imagenHabilidad1.addEventListener("mouseenter", function () {
     cooldownHabilidad1.style.display = 'flex'
     numeroCooldown1.textContent = Juego.personajeActual.habilidades[0].Espera
   } else {
-    nombreHabilidad.textContent = Juego.personajeActual.habilidades[0].nombre
+    nombreHabilidad.textContent = Juego.personajeActual.habilidades[0].Nombre
     descripcionHabilidad.textContent = Juego.personajeActual.habilidades[0].Descripcion
     informacionHabilidad.style.display = 'block'
     cooldownHabilidad1.style.display = 'none'
@@ -686,7 +687,7 @@ cooldownHabilidad1.addEventListener('mouseleave', function () {
 
 
 imagenHabilidad11.addEventListener("click", function () {
-  habilidadSeleccionada = Juego.personajeActual.habilidades[1].nombre;
+  habilidadSeleccionada = Juego.personajeActual.habilidades[1].Nombre;
   console.log(habilidadSeleccionada);
   const seleccionados = document.querySelectorAll('.seleccionHabilidad')
   seleccionados.forEach(habilidadesSeleccionadas => {
@@ -707,7 +708,7 @@ imagenHabilidad11.addEventListener("mouseenter", function () {
     numeroCooldown11.textContent = Juego.personajeActual.habilidades[1].Espera
 
   } else {
-    nombreHabilidad.textContent = Juego.personajeActual.habilidades[1].nombre
+    nombreHabilidad.textContent = Juego.personajeActual.habilidades[1].Nombre
     descripcionHabilidad.textContent = Juego.personajeActual.habilidades[1].Descripcion
     informacionHabilidad.style.display = 'block'
     cooldownHabilidad11.style.display = 'none'
@@ -747,7 +748,7 @@ imagenAtacar2.addEventListener('mouseleave', function () {
 })
 
 imagenHabilidad2.addEventListener("click", function () {
-  habilidadSeleccionada = Juego.personajeActual.habilidades[0].nombre;
+  habilidadSeleccionada = Juego.personajeActual.habilidades[0].Nombre;
   console.log(habilidadSeleccionada);
   const seleccionados = document.querySelectorAll('.seleccionHabilidad')
   seleccionados.forEach(habilidadesSeleccionadas => {
@@ -765,7 +766,7 @@ imagenHabilidad2.addEventListener("mouseenter", function () {
     numeroCooldown2.textContent = Juego.personajeActual.habilidades[0].Espera
   } else {
 
-    nombreHabilidad2.textContent = Juego.personajeActual.habilidades[0].nombre
+    nombreHabilidad2.textContent = Juego.personajeActual.habilidades[0].Nombre
     descripcionHabilidad2.textContent = Juego.personajeActual.habilidades[0].Descripcion
     informacionHabilidad2.style.display = 'block'
     cooldownHabilidad2.style.display = 'none'
@@ -783,7 +784,7 @@ cooldownHabilidad2.addEventListener('mouseleave', function () {
 
 
 imagenHabilidad22.addEventListener("click", function () {
-  habilidadSeleccionada = Juego.personajeActual.habilidades[1].nombre;
+  habilidadSeleccionada = Juego.personajeActual.habilidades[1].Nombre;
   console.log(habilidadSeleccionada);
   const seleccionados = document.querySelectorAll('.seleccionHabilidad')
   seleccionados.forEach(habilidadesSeleccionadas => {
@@ -800,7 +801,7 @@ imagenHabilidad22.addEventListener("mouseenter", function () {
     cooldownHabilidad22.style.display = 'flex'
     numeroCooldown22.textContent = Juego.personajeActual.habilidades[1].Espera
   } else {
-    nombreHabilidad2.textContent = Juego.personajeActual.habilidades[1].nombre
+    nombreHabilidad2.textContent = Juego.personajeActual.habilidades[1].Nombre
     descripcionHabilidad2.textContent = Juego.personajeActual.habilidades[1].Descripcion
     informacionHabilidad2.style.display = 'block'
     cooldownHabilidad22.style.display = 'none'

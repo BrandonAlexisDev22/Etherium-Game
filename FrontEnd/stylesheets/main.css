@@ -13,7 +13,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(66, 66, 66);
+    background-color: black;
 }
 
 /* Configura el contenedor principal (escenario) con un tamaño fijo y posición relativa. */
