@@ -1,16 +1,16 @@
 //CLASE PRINCIPAL DEL JUEGO
 class Juego {
   //ATRIBUTOS PRINCIPALES DEL JUEGO
-  static equipo1 = [];
-  static equipo2 = [];
-  static turnoActualEquipo1 = 0;
-  static turnoActualEquipo2 = 0;
-  static turnoInicial = 0;
-  static personajeActual = null;
-  static campoEfectos = [];
-  static equipoGanador = undefined
+  static equipo1: Personaje[] = [];
+  static equipo2: Personaje[] = [];
+  static turnoActualEquipo1: number = 0;
+  static turnoActualEquipo2: number = 0;
+  static turnoInicial: number = 0;
+  static personajeActual: Personaje; // Por ahora
+  static campoEfecto: string[] = []; // Por Ahora
+  static equipoGanador: undefined | string = undefined // Por ahora
 
-  static agregarPersonaje(equipo, personaje) {
+  static agregarPersonaje(equipo: number, personaje: Personaje): void {
     // Método que recibe:
     // - equipo: indica a qué equipo se va a agregar el personaje (1 o 2).
     // - personaje: el objeto del personaje que se va a agregar.
@@ -34,7 +34,7 @@ class Juego {
     // Método que no recibe parámetros.
     // Inicializa el juego eligiendo aleatoriamente qué equipo comienza el turno.
     // Establece el personaje actual según el equipo que inicia.
-    let equipoInicial = Math.floor(Math.random() * 2) + 1; //Elegir Aleatoriamente que equipo comienza si el 1 o 2
+    let equipoInicial: number = Math.floor(Math.random() * 2) + 1; //Elegir Aleatoriamente que equipo comienza si el 1 o 2
     this.turnoInicial = equipoInicial; //Turno inicial
     this.personajeActual = equipoInicial == 1 ? this.equipo1[0] : this.equipo2[0]; //Personaje que empezara del equipo inicial
     console.info(
@@ -284,7 +284,7 @@ class Juego {
       
 }
 
-  static aplicarEfectos(personaje) {
+  static aplicarEfectos(personaje: Personaje) {
     // Activa debilitamientos 
     personaje.debilitamiento.forEach((efecto) => {
       if (efecto.constructor.name === "EfectoContinuo") {

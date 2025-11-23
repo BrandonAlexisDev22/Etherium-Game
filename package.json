@@ -4,7 +4,8 @@
   "description": "Etherium Game siendo el segundo proyecto elegido en el IngeniaTech 2024 como uno de los mejores proyectos de la feria, trabajo realizado en compañia de 3 compañeros de colegio",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc --watch",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
