@@ -8,7 +8,7 @@ class Juego {
   static turnoInicial: number = 0;
   static personajeActual: Personaje; // Por ahora
   static campoEfecto: string[] = []; // Por Ahora
-  static equipoGanador: undefined | string = undefined // Por ahora
+  static equipoGanador: Personaje[] = [] // Por ahora
 
   static agregarPersonaje(equipo: number, personaje: Personaje): void {
     // Método que recibe:

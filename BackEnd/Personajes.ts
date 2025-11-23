@@ -24,8 +24,8 @@ class Personaje implements IPersonaje {
   velocidad: number;
   id: number;
   vida: number;
-  fortalecimiento: string[];
-  debilitamiento:  string[];
+  fortalecimiento: Efecto[];
+  debilitamiento:  Efecto[];
   habilidades: any; //Por Ahora
   equipo: number | null; 
   imagen: string;
@@ -100,7 +100,7 @@ Atacar(objetivo: Personaje) {
     console.info("has hecho", Daño ,"puntos de daño al enemigo"); 
   }
   objetivo.vida -= Daño; // Verifica que el daño no sea negativo
-  this.habilidades.forEach((habilidad) => {
+  this.habilidades.forEach((habilidad: Habilidades) => {
     habilidad.reducirEspera();
   });
 
@@ -110,7 +110,7 @@ Atacar(objetivo: Personaje) {
   return true
 }
 
-usarHabilidad(nombreHabilidad, objetivo) {
+usarHabilidad(nombreHabilidad: string, objetivo: Personaje) {
   // Método que recibe:
   // - nombreHabilidad: el nombre de la habilidad que se quiere usar.
   // - objetivo: el personaje sobre el que se va a aplicar la habilidad.
@@ -121,7 +121,7 @@ usarHabilidad(nombreHabilidad, objetivo) {
   if (Juego.personajeActual != this) return console.warn("Es el turno de", Juego.personajeActual); // si el personaje con el turno actual no es el que acciona la habilidad no se efectua la habilidad
 
   const habilidadUsarIndex = this.habilidades.findIndex(
-    (habilidad) => habilidad.nombre == nombreHabilidad
+    (habilidad: Habilidades) => habilidad.Nombre == nombreHabilidad
   ); //Encuentra el indice de la habilidad
 
   if (habilidadUsarIndex === -1) return console.warn("Habilidad no encontrada") ; // si la habilidad no es encontrada no se podra usar
@@ -138,11 +138,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
           return false
         } else {
           habilidadUsar.Activar( this,objetivo );
-          this.habilidades.forEach((habilidad, index) => {
+          this.habilidades.forEach((habilidad: Habilidades, index: number) => {
           if (index != habilidadUsarIndex) habilidad.reducirEspera();
           }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
           Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-          Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+          Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
           ActualizarInterfaz()
         }
       } else {
@@ -151,11 +151,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
           return false
         } else {
           habilidadUsar.Activar( this,objetivo );
-          this.habilidades.forEach((habilidad, index) => {
+          this.habilidades.forEach((habilidad: Habilidades, index: number) => {
           if (index != habilidadUsarIndex) habilidad.reducirEspera();
           }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
           Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-          Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+          Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
           ActualizarInterfaz()
         }
       }
@@ -166,11 +166,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
         return false
       } else {
         habilidadUsar.Activar( this,objetivo );
-        this.habilidades.forEach((habilidad, index) => {
+        this.habilidades.forEach((habilidad: Habilidades, index: number) => {
         if (index != habilidadUsarIndex) habilidad.reducirEspera();
         }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
         Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-        Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+        Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
         ActualizarInterfaz()
       }
     }
@@ -183,11 +183,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
           return false
         } else {
           habilidadUsar.Activar( this,objetivo );
-          this.habilidades.forEach((habilidad, index) => {
+          this.habilidades.forEach((habilidad: Habilidades, index: number) => {
             if (index != habilidadUsarIndex) habilidad.reducirEspera();
           }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
           Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-          Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+          Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
           ActualizarInterfaz()
         }
       } else {
@@ -196,11 +196,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
           return false
         } else {
           habilidadUsar.Activar( this,objetivo );
-          this.habilidades.forEach((habilidad, index) => {
+          this.habilidades.forEach((habilidad: Habilidades, index: number) => {
             if (index != habilidadUsarIndex) habilidad.reducirEspera();
           }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
           Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-          Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+          Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
           ActualizarInterfaz()
         }
       }      
@@ -212,11 +212,11 @@ usarHabilidad(nombreHabilidad, objetivo) {
         return false
       } else {
         habilidadUsar.Activar( this,objetivo );
-        this.habilidades.forEach((habilidad, index) => {
+        this.habilidades.forEach((habilidad: Habilidades, index: number) => {
           if (index != habilidadUsarIndex) habilidad.reducirEspera();
         }); // se recorren las habilidades y se les reduce el cooldown, saltando la habilidad
         Juego.obtenerSiguientePersonaje(); //Obtencion del siguiente personaje
-        Personaje.validarExcesos(this, objetivo); // Validadcion de excesos del personaje principal y el enemigo
+        Personaje.validarExcesos(); // Validadcion de excesos del personaje principal y el enemigo
         ActualizarInterfaz()
       }
     }
