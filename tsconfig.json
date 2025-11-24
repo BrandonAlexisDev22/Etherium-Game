@@ -110,7 +110,8 @@
     "BackEnd/**/*.js",
     "FrontEnd/**/*.js",
     "BackEnd/**/*.ts",
-    "FrontEnd/**/*.ts"
+    "FrontEnd/**/*.ts",
+    "electron/**/*",
   ],
 
   "exclude": [

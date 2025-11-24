@@ -2,10 +2,23 @@
   "name": "etherium-game",
   "version": "1.0.0",
   "description": "Etherium Game siendo el segundo proyecto elegido en el IngeniaTech 2024 como uno de los mejores proyectos de la feria, trabajo realizado en compañia de 3 compañeros de colegio",
-  "main": "index.js",
+  "main": "dist/electron/window.js",
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "desktop": "tsc && electron .",
+    "dist-linux": "npm run build && electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.developing.etheriumgame",
+    "productName": "Etherium Game",
+    "directories": {
+      "output": "release"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "icon": "assets/icon.png"
+    }
   },
   "repository": {
     "type": "git",
@@ -18,7 +31,10 @@
   },
   "homepage": "https://github.com/BrandonAlexisDev22/Etherium-Game#readme",
   "devDependencies": {
+    "@types/electron": "^1.6.12",
     "@types/node": "^24.10.1",
+    "electron": "^39.2.3",
+    "electron-builder": "^26.0.12",
     "typescript": "^5.9.3"
   }
 }
